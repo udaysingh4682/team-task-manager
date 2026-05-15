@@ -5,7 +5,7 @@ server {
     index index.html;
 
     location / {
-        try_files $uri /index.html;
+        try_files $uri $uri/ /index.html;
 
         sub_filter '</body>' '<script>window.__API_BASE__="${API_URL}";</script></body>';
         sub_filter_once on;
