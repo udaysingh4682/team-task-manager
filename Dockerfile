@@ -16,5 +16,5 @@ RUN npm ci --only=production && npm cache clean --force
 COPY server/ ./
 COPY --from=client-build /app/client/dist ./public
 
-EXPOSE 5000
-CMD ["node", "index.js"]
+EXPOSE ${PORT:-5000}
+CMD ["sh", "-c", "node migrations/run.js && node index.js"]
